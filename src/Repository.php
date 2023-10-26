@@ -46,6 +46,11 @@ class Repository
         $this->caches[$file] = $rows;
     }
 
+    public function getRegencies(): array
+    {
+        return $this->mapCsv('regencies.csv', ['id', 'province_id', 'name']);
+    }
+
     public function getRegenciesByProvinceId(string $provinceId): array
     {
         return $this->mapCsv('regencies.csv', ['id', 'province_id', 'name'], function ($row) use ($provinceId) {

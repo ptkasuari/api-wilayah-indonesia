@@ -35,6 +35,9 @@ class Generator
         $provinces = $this->repository->getProvinces();
         $this->generateApi("/provinces.json", $provinces);
 
+        $regencies = $this->repository->getRegencies();
+        $this->generateApi('/regencies.json', $regencies);
+
         foreach ($provinces as $province) {
             $regencies = $this->repository->getRegenciesByProvinceId($province['id']);
             $this->generateApi("/regencies/{$province['id']}.json", $regencies);
